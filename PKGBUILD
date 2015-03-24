@@ -4,21 +4,30 @@ pkgbase=ezgo
 pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan' 'ezgo-kde' 'ezgo-menu' 'ezgo-misc'
          'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks')
 pkgver=12.0
+_ezgover=ezgo12
 pkgrel=1
 makedepends=()
 arch=('x86_64')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
 source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	'50_ezgo.cfg'
 	# ezgo-chem elements
-	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-chem/chemstru_ezgo12.tar.gz"
+	"${_ezgosource}/ezgo-chem/chemstru_${ezgover}.tar.gz"
 	'chemical_struct.desktop'
-	''
-	'')
+	# ezgo-doc elements
+	"${_ezgosource}/ezgo-doc/${ezgover}_doc.tar.gz"
+	'ezgo_doc.desktop'
+	#ezgo-gsyan elements
+	)
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
 	  # ezgo-chem elements
 	  'bf477a9e0ed96b16ecb1c99b6ee5272916ed9ec7'
 	  'c8c01ff2c8dcb8207fb58543e4711fa935389fb6'
+	  # ezgo-doc elements
+	  ''
+	  ''
+	  #ezgo-gsyan elements
 	  ''
 	  '')
 
@@ -58,4 +67,7 @@ package_ezgo-chem() {
 }
 
 package_ezgo-doc() {
+  install -Dm644 ${srcdir}/ezgo_doc.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo12/
+  cp -rv ${srcdir}/ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo12/
 }
