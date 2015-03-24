@@ -49,4 +49,6 @@ package_ezgo-artwork() {
 
 package_ezgo-chem() {
   install -Dm644 ${srcdir}/chemical_struct.desktop ${pkgdir}/usr/share/applications/chemical_struct.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures
+  cp -rv ${srcdir}/chemical_structures_ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures/
 }
