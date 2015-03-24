@@ -6,3 +6,46 @@ pkgname=('ezgo-artwork' 'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan' 'ezgo-kde' 'ezgo-men
 pkgver=12.0
 pkgrel=1
 makedepends=()
+arch=('x86_64')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	'50_ezgo.cfg'
+	# ezgo-chem elements
+	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-chem/chemstru_ezgo12.tar.gz"
+	'chemical_struct.desktop'
+	''
+	'')
+sha1sums=('SKIP'
+	  ''
+	  ''
+	  ''
+	  ''
+	  '')
+
+package_ezgo-artwork() {
+  pkgdesc='Set of artworks sepecified for Ezgo project'
+  install=${pkgname}.install
+  depends=('grub')
+  # FIXME: seperated into ezgo-wallpaper, kde-plasma-themes-ezgo, and kde-ksplash-themes-ezgo, and grub2-themes-ezgo
+  # KDE wallpaper
+  # Install images
+  cd ${srcdir}/${pkgbase}/${pkgname}/wallpaper
+  for px in 1366x768 1920x1080 2560x1600; do
+    install -Dm644 ezgo12-${px}.png ${pkgdir}/usr/share/wallpapers/ezgo/contents/images/${px}.png
+  done
+  # Install metadata
+  install -Dm644 ezgo-wallpaper.png.desktop ${pkgdir}/usr/share/wallpapers/ezgo/metadata.desktop
+
+  # GRUB2 background
+  cd ${srcdir}/${pkgbase}/${pkgname}/grub/
+  install -Dm644 ${srcdir}/50_ezgo.cfg ${pkgdir}/etc/grub.d/50_ezgo.cfg
+  install -Dm644 ezgo-splash-grub-640.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub-640.png
+  install -Dm644 ezgo-splash-grub.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub.png
+  
+  # FIXME: KDM themes
+  # TODO: SDDM themes
+  # FIXME: Ksplash themes
+}
+
+package_ezgo-chem() {
+  install -Dm644 ${srcdir}/chemical_struct.desktop ${pkgdir}/usr/share/applications/chemical_struct.desktop
+}
