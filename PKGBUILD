@@ -15,9 +15,10 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	''
 	'')
 sha1sums=('SKIP'
-	  ''
-	  ''
-	  ''
+	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
+	  # ezgo-chem elements
+	  'bf477a9e0ed96b16ecb1c99b6ee5272916ed9ec7'
+	  'c8c01ff2c8dcb8207fb58543e4711fa935389fb6'
 	  ''
 	  '')
 
