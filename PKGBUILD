@@ -12,10 +12,10 @@ _ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
 source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	'50_ezgo.cfg'
 	# ezgo-chem elements
-	"${_ezgosource}/ezgo-chem/chemstru_${ezgover}.tar.gz"
+	"${_ezgosource}/ezgo-chem/chemstru_${_ezgover}.tar.gz"
 	'chemical_struct.desktop'
 	# ezgo-doc elements
-	"${_ezgosource}/ezgo-doc/${ezgover}_doc.tar.gz"
+	"${_ezgosource}/ezgo-doc/${_ezgover}_doc.tar.gz"
 	'ezgo_doc.desktop'
 	#ezgo-gsyan elements
 	)
@@ -25,8 +25,8 @@ sha1sums=('SKIP'
 	  'bf477a9e0ed96b16ecb1c99b6ee5272916ed9ec7'
 	  'c8c01ff2c8dcb8207fb58543e4711fa935389fb6'
 	  # ezgo-doc elements
-	  ''
-	  ''
+	  '795eb6326fdbe8b3b98d4cd50d37cd32931acfb1'
+	  'c8acee50114fd03aad47dd1d6e5bcb5b34055843'
 	  #ezgo-gsyan elements
 	  ''
 	  '')
