@@ -30,7 +30,7 @@ package_ezgo-artwork() {
   # Install images
   cd ${srcdir}/${pkgbase}/${pkgname}/wallpaper
   for px in 1366x768 1920x1080 2560x1600; do
-    install -Dm644 ezgo12-${px}.png ${pkgdir}/usr/share/wallpapers/ezgo/contents/images/${px}.png
+    install -Dm644 ezgo12-wallpaper-${px}.png ${pkgdir}/usr/share/wallpapers/ezgo/contents/images/${px}.png
   done
   # Install metadata
   install -Dm644 ezgo-wallpaper.png.desktop ${pkgdir}/usr/share/wallpapers/ezgo/metadata.desktop
