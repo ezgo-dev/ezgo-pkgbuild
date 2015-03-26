@@ -1,5 +1,3 @@
-# Initialized
-
 pkgbase=ezgo
 pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan' 'ezgo-kde' 'ezgo-menu' 'ezgo-misc'
          'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks')
@@ -18,7 +16,8 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	"${_ezgosource}/ezgo-doc/${_ezgover}_doc.tar.gz"
 	'ezgo_doc.desktop'
 	#ezgo-gsyan elements
-	)
+	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-gsyan/gsyan_${_ezgover}.tar.gz"
+	'gsyan.desktop')
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
 	  # ezgo-chem elements
@@ -30,6 +29,7 @@ sha1sums=('SKIP'
 	  #ezgo-gsyan elements
 	  ''
 	  '')
+# TODO: license all the packages
 
 # FIXME: seperated into ezgo-wallpaper, kde-plasma-themes-ezgo, 
 #        kde-ksplash-themes-ezgo, and grub2-themes-ezgo
@@ -61,13 +61,27 @@ package_grub2-themes-ezgo() {
   # FIXME: Ksplash themes
 
 package_ezgo-chem() {
+  pkgdesc='Set of educational software of Chemistry for high school'
   install -Dm644 ${srcdir}/chemical_struct.desktop ${pkgdir}/usr/share/applications/chemical_struct.desktop
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures
   cp -rv ${srcdir}/chemical_structures_ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures/
 }
 
 package_ezgo-doc() {
+  pkgdesc='Ezgo manual document'
   install -Dm644 ${srcdir}/ezgo_doc.desktop
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo12/
   cp -rv ${srcdir}/ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo12/
+}
+
+package_ezgo-gsyan() {
+  pkgdesc='Flash tutorial accessories made by G. S. Yan'
+  optdepends='pepperflashplugin: for chromium-based browsers
+	      flashplugin: adobe flash plugin for web browsers'
+  install -Dm644 ${srcdir}/gsyan.desktop ${pkgdir}/usr/share/applications/gsyan.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan
+  cp -rv ${srcdir}/gsyan_ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan/
+}
+
+package_ezgo-kde() {
 }
