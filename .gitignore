@@ -1,0 +1,11 @@
+pkg
+src
+dbg
+hdr
+*~
+
+*.db.tar.*
+*.pkg.tar.*
+*.tar.*
+*.log
+*.log*
