@@ -1,6 +1,7 @@
 pkgbase=ezgo
-pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan' 'ezgo-kde' 'ezgo-menu' 'ezgo-misc'
-         'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks')
+pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'kde-ksplash-themes-ezgo' 'kde-kdm-themes-ezgo' # Looks and feels of ezgo
+         'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
+         'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks' # Utilities of ezgo)
 pkgver=12.0
 _ezgover=ezgo12
 pkgrel=1
@@ -56,10 +57,23 @@ package_grub2-themes-ezgo() {
   install -Dm644 ezgo-splash-grub-640.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub-640.png
   install -Dm644 ezgo-splash-grub.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub.png
 }
-  # FIXME: KDM themes
   # TODO: SDDM themes
-  # FIXME: Ksplash themes
+package_kde-ksplash-themes-ezgo() {
+  group=('ezgo-artwork' 'ezgo-kde')
+  install -dm755 ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo
+  cp -rv ${srcdir}/ezgo-kde/ksplash-ezgo-theme/* ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/
+  mv ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/ksplashrc ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/Theme.rc
+}
 
+package_kde-kdm-themes-ezgo() {
+  group=('ezgo-artwork' 'ezgo-kde')
+  depends=('kde-workspace')
+  install=${pkgname}.install
+  install -dm755 ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo
+  cp -rv ${srcdir}/ezgo-kde/kdm-theme/ezgo/* ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/
+  rm -v ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/30_ezgo
+}
+  
 package_ezgo-chem() {
   pkgdesc='Set of educational software of Chemistry for high school'
   depends=('xdg-utils')
@@ -84,7 +98,4 @@ package_ezgo-gsyan() {
   install -Dm644 ${srcdir}/gsyan.desktop ${pkgdir}/usr/share/applications/gsyan.desktop
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan
   cp -rv ${srcdir}/gsyan_ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan/
-}
-
-package_ezgo-kde() {
 }
