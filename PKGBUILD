@@ -1,11 +1,10 @@
 pkgbase=ezgo
 pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'kde-ksplash-themes-ezgo' 'kde-kdm-themes-ezgo' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
-         'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks' # Utilities of ezgo)
+         'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks') # Utilities of ezgo)
 pkgver=12.0
 _ezgover=ezgo12
 pkgrel=1
-makedepends=()
 arch=('x86_64')
 _ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
 source=("git://anonscm.debian.org/blends/projects/ezgo.git"
@@ -18,7 +17,9 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	'ezgo_doc.desktop'
 	#ezgo-gsyan elements
 	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-gsyan/gsyan_${_ezgover}.tar.gz"
-	'gsyan.desktop')
+	'gsyan.desktop'
+	#ezgo-misc
+	"7z.desktop")
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
 	  # ezgo-chem elements
@@ -27,14 +28,16 @@ sha1sums=('SKIP'
 	  # ezgo-doc elements
 	  '795eb6326fdbe8b3b98d4cd50d37cd32931acfb1'
 	  'c8acee50114fd03aad47dd1d6e5bcb5b34055843'
-	  #ezgo-gsyan elements
-	  ''
-	  '')
+	  #ezgo-gsyan elements)
 # TODO: license all the packages
 
 # FIXME: seperated into ezgo-wallpaper, kde-plasma-themes-ezgo, 
 #        kde-ksplash-themes-ezgo, and grub2-themes-ezgo
-  
+prepare() {
+  msg  'extract 7zip archive'
+  cd ${srcdir}
+  tar xf ${srcdir}/ezgo/misc/7zip.tar.gz
+}
 package_ezgo-wallpapers() {
   pkgdesc='Set of wallpapers sepecified for Ezgo project'
   install=${pkgname}.install
@@ -61,7 +64,7 @@ package_grub2-themes-ezgo() {
 package_kde-ksplash-themes-ezgo() {
   group=('ezgo-artwork' 'ezgo-kde')
   install -dm755 ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo
-  cp -rv ${srcdir}/ezgo-kde/ksplash-ezgo-theme/* ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/
+  cp -rv ${srcdir}/${pkgbase}/ezgo-kde/ksplash-ezgo-theme/* ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/
   mv ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/ksplashrc ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/Theme.rc
 }
 
@@ -70,7 +73,7 @@ package_kde-kdm-themes-ezgo() {
   depends=('kde-workspace')
   install=${pkgname}.install
   install -dm755 ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo
-  cp -rv ${srcdir}/ezgo-kde/kdm-theme/ezgo/* ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/
+  cp -rv ${srcdir}/${pkgbase}/ezgo-kde/kdm-theme/ezgo/* ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/
   rm -v ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/30_ezgo
 }
   
@@ -98,4 +101,25 @@ package_ezgo-gsyan() {
   install -Dm644 ${srcdir}/gsyan.desktop ${pkgdir}/usr/share/applications/gsyan.desktop
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan
   cp -rv ${srcdir}/gsyan_ezgo12/* ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan/
+}
+
+package_ezgo-misc() {
+  # TODO: This is a big package bundled with several utilities that aren't belonging to the repo.
+  #       Maybe, we should make this a meta package?
+  pkgdesc=('Misc utilities for ezgo project - meta package')
+  depends=('pepperflashplugin' 'openjdk' 'chromium' 'skype' 'wine')
+  
+  msg 'Installing media pack'
+  echo 'We may not need all these utilities'
+  # TODO:
+  msg 'install ktuberling sound theme'
+  install -dm755 ${srcdir}/${pkgname}/ktuberling/zh_TW/ ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW/
+  install -Dm644 ${srcdir}/${pkgname}/ktuberling/zh_TW.soundtheme ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW.soundtheme
+  
+  msg 'Installing 7zipFM.exe (requires wine)'
+  install -dm755 ${srcdir}/7zip ${pkgdir}/opt/7zip
+  install -Dm755 ${srcdir}/7z.desktop ${pkgdir}/usr/share/applications/7z.desktop
+  
+  msg 'Install MIME type values'
+  install -Dm644 ${srcdir}/${pkgname}/mimeapps.list ${pkgdir}/usr/share/applications/mimeapps.list
 }
