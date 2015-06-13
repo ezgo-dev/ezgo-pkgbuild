@@ -16,12 +16,14 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	"${_ezgosource}/ezgo-doc/${_ezgover}_doc.tar.gz"
 	'ezgo_doc.desktop'
 	# ezgo-gsyan elements
-	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-gsyan/gsyan_${_ezgover}.tar.gz"
+	"${_ezgosource}/ezgo-gsyan/gsyan_${_ezgover}.tar.gz"
 	'gsyan.desktop'
 	# ezgo-misc
 	"7z.desktop"
 	# ezgo-npa elements
-	"ftp://goodhorse.idv.tw/debian-ezgo/ezgo-npa/npa_${_ezgover}.tar.gz")
+	"${_ezgosource}/ezgo-npa/npa_${_ezgover}.tar.gz"
+	'npa.desktop'
+	)
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
 	  # ezgo-chem elements
@@ -135,4 +137,5 @@ package_ezgo-npa() {
   optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
   cp -rv ${srcdir}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
+  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
 }
