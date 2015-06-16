@@ -1,0 +1,20 @@
+pkgname=('ezgo-chem')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc='Set of educational software of Chemistry for high school'
+depends=('xdg-utils')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	"${_ezgosource}/ezgo-chem/chemstru_${_ezgover}.tar.gz"
+	'chemical_struct.desktop')
+sha1sums=('SKIP'
+	  'bf477a9e0ed96b16ecb1c99b6ee5272916ed9ec7'
+	  'c8c01ff2c8dcb8207fb58543e4711fa935389fb6')
+	  
+package() {
+  install -Dm644 ${srcdir}/chemical_struct.desktop ${pkgdir}/usr/share/applications/chemical_struct.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures
+  cp -rv ${srcdir}/chemical_structures_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/chemical_structures/
+}
