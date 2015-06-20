@@ -1,0 +1,20 @@
+pkgname=('ezgo-doc')
+pkgver=12.0
+pkgdesc='Ezgo manual document'
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+depends=('xdg-utils')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	"${_ezgosource}/ezgo-doc/${_ezgover}_doc.tar.gz"
+	'ezgo_doc.desktop')
+sha1sums=('SKIP'
+	  '795eb6326fdbe8b3b98d4cd50d37cd32931acfb1'
+	  'c8acee50114fd03aad47dd1d6e5bcb5b34055843')
+
+package() {
+  install -Dm644 ${srcdir}/ezgo_doc.desktop ${pkgdir}/usr/share/applications/ezgo_doc.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/${_ezgover}/
+  cp -rv ${srcdir}/${_ezgover}/* ${pkgdir}/usr/share/ezgo/${_ezgover}/
+}
