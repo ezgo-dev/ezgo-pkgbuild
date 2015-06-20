@@ -1,0 +1,22 @@
+pkgname=('ezgo-gsyan')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+pkgdesc='Flash tutorial accessories made by G. S. Yan'
+arch=('x86_64')
+depends=('xdg-utils')
+optdepends=('pepperflashplugin: for chromium-based browsers
+	    flashplugin: adobe flash plugin for web browsers')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	"${_ezgosource}/ezgo-gsyan/gsyan_${_ezgover}.tar.gz"
+	'gsyan.desktop')
+sha1sums=('SKIP'
+          '85b3771e2ce2a177b445137a185cf0a04122aca9'
+          '6263a94dc8c07101d9db589c127fe6dc03e168d6')
+
+package() {
+  install -Dm644 ${srcdir}/gsyan.desktop ${pkgdir}/usr/share/applications/gsyan.desktop
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan
+  cp -rv ${srcdir}/gsyan_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/gsyan/
+}
