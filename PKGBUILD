@@ -94,7 +94,7 @@ package_ezgo-chem() {
 package_ezgo-doc() {
   pkgdesc='Ezgo manual document'
   depends=('xdg-utils')
-  install -Dm644 ${srcdir}/ezgo_doc.desktop
+  install -Dm644 ${srcdir}/ezgo_doc.desktop ${pkgdir}/usr/share/applications/ezgo_doc.desktop
   install -dm755 ${pkgdir}/usr/share/ezgo/${_ezgover}/
   cp -rv ${srcdir}/${_ezgover}/* ${pkgdir}/usr/share/ezgo/${_ezgover}/
 }
