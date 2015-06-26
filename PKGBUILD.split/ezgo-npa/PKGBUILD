@@ -17,5 +17,5 @@ sha1sums=('SKIP'
 package() {
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
   cp -rv ${srcdir}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
-  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
+  install -Dm644 ${srcdir}/ezgo/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
 }
