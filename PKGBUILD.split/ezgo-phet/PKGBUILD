@@ -1,0 +1,22 @@
+pkgname=('ezgo-phet')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+pkgdesc=('PhET package')
+arch=('x86_64')
+depends=('flashplugin')
+optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+_phetver=PhET2015
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	"${_ezgosource}/ezgo-phet/${_phetver}.tar.gz"
+	'phet.desktop')
+sha1sums=('SKIP'
+          '605e02fd58133e4029fcb7950066245216cbe2e3'
+          '26ff8b02cc75783f931179cecf6ef5e562e06dba')
+
+package_ezgo-phet() {
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET
+  cp -rv ${srcdir}/${_phetver}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET/
+  install -Dm644 ${srcdir}/ezgo/${pkgname}/phet.desktop ${pkgdir}/usr/share/applications/phet.desktop
+}
