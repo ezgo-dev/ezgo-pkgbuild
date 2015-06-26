@@ -7,6 +7,7 @@ _ezgover=ezgo12
 pkgrel=1
 arch=('x86_64')
 _ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+_phetver=PhET2015
 source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	'50_ezgo.cfg'
 	# ezgo-chem elements
@@ -23,6 +24,9 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	# ezgo-npa elements
 	"${_ezgosource}/ezgo-npa/npa_${_ezgover}.tar.gz"
 	'npa.desktop'
+	# ezgo-phet elements
+	"${_ezgosource}/ezgo-phet/${_phetver}.tar.gz"
+	'phet.desktop'
 	)
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
@@ -33,10 +37,14 @@ sha1sums=('SKIP'
 	  '795eb6326fdbe8b3b98d4cd50d37cd32931acfb1'
 	  'c8acee50114fd03aad47dd1d6e5bcb5b34055843'
 	  # ezgo-gsyan elements
+	  '85b3771e2ce2a177b445137a185cf0a04122aca9'
+          '6263a94dc8c07101d9db589c127fe6dc03e168d6'
 	  # ezgo-misc
 	  # ezgo-npa elements
-	  '02d31b9ae4502d55953362ea34c92589'
-	  )
+	  '3d09ac6ebad61ce0f8dd59c183f44bcef92e7e2b'
+          'ac61f263705bc3f7d2f080505d7684768eb06c4d'
+          # ezgo-phet
+          )
 # TODO: licensing all the packages
 
 prepare() {
@@ -138,4 +146,13 @@ package_ezgo-npa() {
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
   cp -rv ${srcdir}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
   install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
+}
+
+package_ezgo-phet() {
+  pkgdesc=('PhET package')
+  depends=('flashplugin')
+  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET
+  cp -rv ${srcdir}/${_phetver}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET/
+  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/phet.desktop ${pkgdir}/usr/share/applications/phet.desktop
 }
