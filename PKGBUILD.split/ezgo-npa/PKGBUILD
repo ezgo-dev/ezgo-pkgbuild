@@ -1,0 +1,21 @@
+pkgname=('ezgo-npa')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('NPA package')
+depends=('flashplugin')
+optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	"${_ezgosource}/ezgo-npa/npa_${_ezgover}.tar.gz"
+	'npa.desktop')
+sha1sums=('SKIP'
+          '3d09ac6ebad61ce0f8dd59c183f44bcef92e7e2b'
+          'ac61f263705bc3f7d2f080505d7684768eb06c4d')
+
+package() {
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
+  cp -rv ${srcdir}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
+  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
+}
