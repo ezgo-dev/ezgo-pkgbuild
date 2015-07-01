@@ -1,0 +1,30 @@
+pkgname=('ezgo-usgs')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+pkgdesc='USGS package'
+arch=('x86_64')
+depends=('xdg-utils')
+optdepends=('pepperflashplugin: for chromium-based browsers
+	    flashplugin: adobe flash plugin for web browsers')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git"
+	'USGS.png'
+	'usgs.desktop')
+sha1sums=('SKIP'
+          '3254f9a55159e1bbf2c411e9b1e9130497d95a14'
+          '519803fd1874ede6003ff68a8241329996eef2b3')
+# TODO: licensing all the packages
+
+package_ezgo-usgs() {
+  install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
+  install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/ezgo/icons/USGS.png
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
+  
+  cd ${pkgdir}/usr/share/ezgo/ezgo-prt
+  
+  cp -v ${srcdir}/ezgo/ezgo-usgs/usgs_${_ezgover}.tar.gz ${pkgdir}/usr/share/ezgo/ezgo-prt/
+  tar xfz usgs_${_ezgover}.tar.gz
+  rm -rf ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
+  ln -s ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover} ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
+  rm -f ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover}.tar.gz
+}
