@@ -161,18 +161,15 @@ package_ezgo-phet() {
 }
 
 package_ezgo-usgs() {
-  pkgdesc='USGS package'
-  depends=('xdg-utils')
-  optdepends=('pepperflashplugin: for chromium-based browsers
-	      flashplugin: adobe flash plugin for web browsers')
   install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
-  install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/applications/USGS.png
+  install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/ezgo/icons/USGS.png
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   
   cd ${pkgdir}/usr/share/ezgo/ezgo-prt
   
-  cp -v ${srcdir}/ezgo/usgs_${_ezgover}.tar.gz ${pkgdir}/usr/share/ezgo/ezgo-prt/
+  cp -v ${srcdir}/ezgo/ezgo-usgs/usgs_${_ezgover}.tar.gz ${pkgdir}/usr/share/ezgo/ezgo-prt/
   tar xfz usgs_${_ezgover}.tar.gz
+  rm -rf ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   ln -s ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover} ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
-  chmod 0755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   rm -f ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover}.tar.gz
 }
