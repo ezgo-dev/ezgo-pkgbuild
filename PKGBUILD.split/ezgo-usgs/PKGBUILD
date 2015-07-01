@@ -15,7 +15,7 @@ sha1sums=('SKIP'
           '519803fd1874ede6003ff68a8241329996eef2b3')
 # TODO: licensing all the packages
 
-package_ezgo-usgs() {
+package() {
   install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
   install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/ezgo/icons/USGS.png
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
