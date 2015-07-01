@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[zh_TW]=地震動畫教學_USGS
+Comment=USGS
+Exec=xdg-open /usr/share/ezgo/ezgo-prt/usgs/index.html
+GenericName[zh_TW]=這是美國地質調查局USGS所製作的地震動畫教學範例
+GenericName=USGS
+Icon=/usr/share/ezgo/icons/USGS.png
+Name[zh_TW]=地震動畫教學_USGS
+Name[en]=USGS
+Name=地震動畫教學_USGS
+StartupNotify=true
+Terminal=false
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Education;X-OpenContent;
+

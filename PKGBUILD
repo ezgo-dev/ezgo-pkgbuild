@@ -27,6 +27,9 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	# ezgo-phet elements
 	"${_ezgosource}/ezgo-phet/${_phetver}.tar.gz"
 	'phet.desktop'
+	# ezgo-usgs elements
+	'USGS.png'
+	'usgs.desktop'
 	)
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
@@ -155,4 +158,21 @@ package_ezgo-phet() {
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET
   cp -rv ${srcdir}/${_phetver}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET/
   install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/phet.desktop ${pkgdir}/usr/share/applications/phet.desktop
+}
+
+package_ezgo-usgs() {
+  pkgdesc='USGS package'
+  depends=('xdg-utils')
+  optdepends=('pepperflashplugin: for chromium-based browsers
+	      flashplugin: adobe flash plugin for web browsers')
+  install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
+  install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/applications/USGS.png
+  
+  cd ${pkgdir}/usr/share/ezgo/ezgo-prt
+  
+  cp -v ${srcdir}/ezgo/usgs_${_ezgover}.tar.gz ${pkgdir}/usr/share/ezgo/ezgo-prt/
+  tar xfz usgs_${_ezgover}.tar.gz
+  ln -s ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover} ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
+  chmod 0755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
+  rm -f ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover}.tar.gz
 }
