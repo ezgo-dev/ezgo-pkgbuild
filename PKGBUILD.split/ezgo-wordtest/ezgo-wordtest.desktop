@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[zh_TW]=字音字形體驗版
+Comment=ezgo Wordtest
+Exec=xdg-open /usr/share/ezgo/ezgo-wordtest/index.html
+GenericName[zh_TW]=花蓮縣字音字形學習網的體驗版
+GenericName=ezgo Wordtest
+Icon=/usr/share/ezgo/icons/good_1.png
+Name[zh_TW]=字音字形網體驗版
+Name[zh_CN]=字音字形網體驗版
+Name[en]=ezgo Wordtest
+Name=字音字形網體驗版
+StartupNotify=true
+Terminal=false
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Education;X-OpenContent;

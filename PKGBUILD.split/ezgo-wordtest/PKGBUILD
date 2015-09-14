@@ -1,0 +1,17 @@
+pkgname=('ezgo-wordtest')
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+pkgdesc=('Wordtest package')
+arch=('x86_64')
+_ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
+depends=('xdg-utils')
+source=('ezgo-wordtest.tar.gz'
+	'ezgo-wordtest.desktop')
+sha1sums=()
+
+package() {
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-wordtest
+  cp -rv ${srcdir}/ezgo-wordtest/* ${pkgdir}/usr/share/ezgo/ezgo-wordtest/
+  install -Dm644 ${srcdir}/ezgo-wordtest.desktop ${pkgdir}/usr/share/applications/ezgo-wordtest.desktop
+}
