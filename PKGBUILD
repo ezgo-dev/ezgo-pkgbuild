@@ -161,6 +161,9 @@ package_ezgo-phet() {
 }
 
 package_ezgo-usgs() {
+  pkgdesc=('USGS package')
+  depends=('flashplugin')
+  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
   install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
   install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/ezgo/icons/USGS.png
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
