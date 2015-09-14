@@ -182,6 +182,7 @@ package_ezgo-usgs() {
 
 package_ezgo-wordtest() {
   pkgdesc=('Wordtest package')
+  depends=('xdg-utils')
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-wordtest
   cp -rv ${srcdir}/ezgo-wordtest/* ${pkgdir}/usr/share/ezgo/ezgo-wordtest/
   install -Dm644 ${srcdir}/ezgo-wordtest.desktop ${pkgdir}/usr/share/applications/ezgo-wordtest.desktop
