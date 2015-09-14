@@ -30,6 +30,9 @@ source=("git://anonscm.debian.org/blends/projects/ezgo.git"
 	# ezgo-usgs elements
 	'USGS.png'
 	'usgs.desktop'
+	# ezgo-wordtest elements
+	'ezgo-wordtest.tar.gz'
+	'ezgo-wordtest.desktop'
 	)
 sha1sums=('SKIP'
 	  'be1ed0b3f1da77ce9393eea84413193e771ebac2'
@@ -175,4 +178,11 @@ package_ezgo-usgs() {
   rm -rf ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   ln -s ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover} ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   rm -f ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs_${_ezgover}.tar.gz
+}
+
+package_ezgo-wordtest() {
+  pkgdesc=('Wordtest package')
+  install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-wordtest
+  cp -rv ${srcdir}/ezgo-wordtest/* ${pkgdir}/usr/share/ezgo/ezgo-wordtest/
+  install -Dm644 ${srcdir}/ezgo-wordtest.desktop ${pkgdir}/usr/share/applications/ezgo-wordtest.desktop
 }
