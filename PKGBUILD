@@ -1,7 +1,8 @@
 pkgbase=ezgo
 pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
-         'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks') # Utilities of ezgo)
+         'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' # Utilities of ezgo
+         'ezgo-tasks' 'ezgo-accessories' 'ezgo-artwork' 'ezgo-common' 'ezgo-education' 'ezgo-games' 'ezgo-graphics' 'ezgo-lang-zh_TW-desktop' 'ezgo-multimedia' 'ezgo-network' 'ezgo-office') # Metapackage of ezgo
 pkgver=12.0
 _ezgover=ezgo12
 pkgrel=1
