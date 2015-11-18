@@ -1,5 +1,5 @@
 pkgbase=ezgo
-pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'kde-ksplash-themes-ezgo' 'kde-kdm-themes-ezgo' # Looks and feels of ezgo
+pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
          'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' 'ezgo-tasks') # Utilities of ezgo)
 pkgver=12.0
@@ -81,21 +81,6 @@ package_grub2-themes-ezgo() {
   install -Dm644 ezgo-splash-grub.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub.png
 }
   # TODO: SDDM themes
-package_kde-ksplash-themes-ezgo() {
-  group=('ezgo-artwork' 'ezgo-kde')
-  install -dm755 ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo
-  cp -rv ${srcdir}/${pkgbase}/ezgo-kde/ksplash-ezgo-theme/* ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/
-  mv ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/ksplashrc ${pkgdir}/usr/share/apps/ksplash/Themes/ezgo/Theme.rc
-}
-
-package_kde-kdm-themes-ezgo() {
-  group=('ezgo-artwork' 'ezgo-kde')
-  depends=('kde-workspace')
-  install=${pkgname}.install
-  install -dm755 ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo
-  cp -rv ${srcdir}/${pkgbase}/ezgo-kde/kdm-theme/ezgo/* ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/
-  rm -v ${pkgdir}/usr/share/kde4/apps/kdm/themes/ezgo/30_ezgo
-}
 
 package_ezgo-chem() {
   pkgdesc='Set of educational software of Chemistry for high school'

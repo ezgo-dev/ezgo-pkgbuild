@@ -1,9 +1,0 @@
-post_install() {
-    echo 'Updating kdm setting to use ezgo theme'
-    sed -i -e s,horos,ezgo,g usr/share/config/kdm/kdmrc
-}
-
-post_remove() {
-    echo 'Reverse kdm setting to Chakra default'
-    sed -i -e s,ezgo,horos,g usr/share/config/kdm/kdmrc
-}
