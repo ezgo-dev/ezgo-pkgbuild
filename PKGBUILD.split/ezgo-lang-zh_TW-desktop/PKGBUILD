@@ -1,0 +1,13 @@
+pkgname=ezgo-lang-zh_TW-desktop
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-lang-zh_TW-desktop related packages')
+depends=('wqy-zenhei' 'wqy-microhei' 'otc-source-han-sans' 'kde-l10n-zh_TW')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo-lang-zh_TW-desktop meta package."
+}

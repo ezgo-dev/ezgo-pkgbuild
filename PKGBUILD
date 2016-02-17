@@ -211,3 +211,9 @@ package_ezgo-graphics() {
            'hugin' 'krita' 'freecad' 'kruler' 'kdegraphics-kolourpaint' 'kamoso' 'librecad')
   echo "This is a ezgo-graphics meta package."
 }
+
+package_ezgo-lang-zh_TW-desktop() {
+  pkgdesc=('Meta package to pull all ezgo-lang-zh_TW-desktop related packages')
+  depends=('wqy-zenhei' 'wqy-microhei' 'otc-source-han-sans' 'kde-l10n-zh_TW')
+  echo "This is a ezgo-lang-zh_TW-desktop meta package."
+}
