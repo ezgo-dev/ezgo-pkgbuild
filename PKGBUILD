@@ -191,3 +191,9 @@ package_ezgo-common() {
   depends=('mesa' 'bash-completion' 'openssh')
   echo "This is a ezgo-common meta package."
 }
+
+package_ezgo-education() {
+  pkgdesc=('Meta package to pull all ezgo-education related packages')
+  depends=('kdeedu' 'wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
+  echo "This is a ezgo-education meta package."
+}
