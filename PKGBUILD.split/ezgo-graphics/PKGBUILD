@@ -1,0 +1,14 @@
+pkgname=ezgo-graphics
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-graphics related packages')
+depends=('kdegraphics-kolourpaint' 'tuxpaint' 'inkscape' 'scribus' 'digikam' 'gwenview' 'blender' 'fotowall'
+         'hugin' 'krita' 'freecad' 'kruler' 'kdegraphics-kolourpaint' 'kamoso' 'librecad')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo-graphics meta package."
+}

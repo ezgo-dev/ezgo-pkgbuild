@@ -6,7 +6,6 @@ arch=('x86_64')
 pkgdesc=('Meta package to pull all ezgo-accessories related packages')
 depends=('convertall' 'kate' 'kcalc' 'kmag')
 source=("git://anonscm.debian.org/blends/projects/ezgo.git")
-install=${pkgname}.install
 sha1sums=('SKIP')
   
 package() {

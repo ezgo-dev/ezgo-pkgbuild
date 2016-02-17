@@ -7,7 +7,6 @@ pkgdesc=('Meta package to pull all ezgo-games related packages')
 depends=('supertux' 'pingus' 'supertuxkart' 'kdegames-ksudoku' 'picmi' 'kblocks' 'kdegames-palapeli' 'kdegames-kubrick'
          'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo')
 source=("git://anonscm.debian.org/blends/projects/ezgo.git")
-install=${pkgname}.install
 sha1sums=('SKIP')
   
 package() {

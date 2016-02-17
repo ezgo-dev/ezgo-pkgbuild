@@ -204,3 +204,10 @@ package_ezgo-games() {
            'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo')
   echo "This is a ezgo-games meta package."
 }
+
+package_ezgo-graphics() {
+  pkgdesc=('Meta package to pull all ezgo-graphics related packages')
+  depends=('kdegraphics-kolourpaint' 'tuxpaint' 'inkscape' 'scribus' 'digikam' 'gwenview' 'blender' 'fotowall'
+           'hugin' 'krita' 'freecad' 'kruler' 'kdegraphics-kolourpaint' 'kamoso' 'librecad')
+  echo "This is a ezgo-graphics meta package."
+}
