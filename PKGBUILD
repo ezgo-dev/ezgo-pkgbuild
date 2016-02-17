@@ -230,3 +230,9 @@ package_ezgo-network() {
   depends=('pidgin' 'kdenetwork-kopete' 'qftp' 'filezilla' 'kdenetwork-krdc')
   echo "This is a ezgo-network meta package."
 }
+
+package_ezgo-office() {
+  pkgdesc=('Meta package to pull all ezgo-office related packages')
+  depends=('okular' 'scribus' 'calibre')
+  echo "This is a ezgo-officek meta package."
+}

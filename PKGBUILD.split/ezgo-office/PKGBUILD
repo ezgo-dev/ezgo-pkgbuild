@@ -1,0 +1,12 @@
+pkgname=ezgo-office
+pkgver=12.0
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-office related packages')
+depends=('okular' 'scribus' 'calibre')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo-officek meta package."
+}
