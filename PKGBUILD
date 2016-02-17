@@ -217,3 +217,10 @@ package_ezgo-lang-zh_TW-desktop() {
   depends=('wqy-zenhei' 'wqy-microhei' 'otc-source-han-sans' 'kde-l10n-zh_TW')
   echo "This is a ezgo-lang-zh_TW-desktop meta package."
 }
+
+package_ezgo-multimedia() {
+  pkgdesc=('Meta package to pull all ezgo-multimedia related packages')
+  depends=('amarok' 'vlc' 'audacity' 'tuxguitar' 'rosegarden' 'kdenlive' 'k3b' 'musescore' 'kodi' 'lmms' 'hydrogen'
+           'winff' 'ardour' 'timidity++')
+  echo "This is a ezgo-multimedia meta package."
+}

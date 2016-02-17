@@ -1,0 +1,14 @@
+pkgname=ezgo-multimedia
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-multimedia related packages')
+depends=('amarok' 'vlc' 'audacity' 'tuxguitar' 'rosegarden' 'kdenlive' 'k3b' 'musescore' 'kodi' 'lmms' 'hydrogen'
+         'winff' 'ardour' 'timidity++')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo-multimedia meta package."
+}
