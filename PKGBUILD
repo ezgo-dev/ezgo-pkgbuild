@@ -2,7 +2,7 @@ pkgbase=ezgo
 pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
          'ezgo-menu' 'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' # Utilities of ezgo
-         'ezgo-tasks' 'ezgo-accessories' 'ezgo-artwork' 'ezgo-common' 'ezgo-education' 'ezgo-games' 'ezgo-graphics' 'ezgo-lang-zh_TW-desktop' 'ezgo-multimedia' 'ezgo-network' 'ezgo-office') # Metapackage of ezgo
+         'ezgo-tasks' 'ezgo-accessories' 'ezgo-common' 'ezgo-education' 'ezgo-games' 'ezgo-graphics' 'ezgo-lang-zh_TW-desktop' 'ezgo-multimedia' 'ezgo-network' 'ezgo-office') # Metapackage of ezgo
 pkgver=12.0
 _ezgover=ezgo12
 pkgrel=1
@@ -184,4 +184,10 @@ package_ezgo-accessories() {
   pkgdesc=('Meta package to pull all ezgo-accessories related packages')
   depends=('convertall' 'kate' 'kcalc' 'kmag')
   echo "This is a ezgo-accessories meta package."
+}
+
+package_ezgo-common() {
+  pkgdesc=('Meta package to pull all ezgo-common related packages')
+  depends=('mesa' 'bash-completion' 'openssh')
+  echo "This is a ezgo-common meta package."
 }
