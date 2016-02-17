@@ -224,3 +224,9 @@ package_ezgo-multimedia() {
            'winff' 'ardour' 'timidity++')
   echo "This is a ezgo-multimedia meta package."
 }
+
+package_ezgo-network() {
+  pkgdesc=('Meta package to pull all ezgo-network related packages')
+  depends=('pidgin' 'kdenetwork-kopete' 'qftp' 'filezilla' 'kdenetwork-krdc')
+  echo "This is a ezgo-network meta package."
+}

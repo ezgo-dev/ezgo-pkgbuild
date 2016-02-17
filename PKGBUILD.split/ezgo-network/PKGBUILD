@@ -1,0 +1,12 @@
+pkgname=ezgo-network
+pkgver=12.0
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-network related packages')
+depends=('pidgin' 'kdenetwork-kopete' 'qftp' 'filezilla' 'kdenetwork-krdc')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo-network meta package."
+}

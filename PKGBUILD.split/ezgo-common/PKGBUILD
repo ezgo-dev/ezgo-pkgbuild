@@ -1,6 +1,5 @@
 pkgname=ezgo-common
 pkgver=12.0
-_ezgover=ezgo12
 pkgrel=1
 arch=('x86_64')
 pkgdesc=('Meta package to pull all ezgo-common related packages')
