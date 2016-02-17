@@ -173,3 +173,15 @@ package_ezgo-wordtest() {
   cp -rv ${srcdir}/ezgo-wordtest/* ${pkgdir}/usr/share/ezgo/ezgo-wordtest/
   install -Dm644 ${srcdir}/ezgo-wordtest.desktop ${pkgdir}/usr/share/applications/ezgo-wordtest.desktop
 }
+
+package_ezgo-tasks() {
+  pkgdesc=('Meta package to pull all ezgo-tasks related packages')
+  depends=('ezgo-tasks' 'ezgo-accessories' 'ezgo-artwork' 'ezgo-common' 'ezgo-education' 'ezgo-games' 'ezgo-graphics' 'ezgo-lang-zh_TW-desktop' 'ezgo-multimedia' 'ezgo-network' 'ezgo-office')
+  echo "This is a ezgo meta package."
+}
+
+package_ezgo-accessories() {
+  pkgdesc=('Meta package to pull all ezgo-accessories related packages')
+  depends=('convertall' 'kate' 'kcalc' 'kmag')
+  echo "This is a ezgo-accessories meta package."
+}

@@ -1,0 +1,14 @@
+pkgname=ezgo-tasks
+pkgver=12.0
+_ezgover=ezgo12
+pkgrel=1
+arch=('x86_64')
+pkgdesc=('Meta package to pull all ezgo-tasks related packages')
+depends=('ezgo-tasks' 'ezgo-accessories' 'ezgo-artwork' 'ezgo-common' 'ezgo-education' 'ezgo-games' 'ezgo-graphics' 'ezgo-lang-zh_TW-desktop' 'ezgo-multimedia' 'ezgo-network' 'ezgo-office')
+source=("git://anonscm.debian.org/blends/projects/ezgo.git")
+install=${pkgname}.install
+sha1sums=('SKIP')
+  
+package() {
+  echo "This is a ezgo meta package."
+}
