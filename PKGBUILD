@@ -197,3 +197,10 @@ package_ezgo-education() {
   depends=('kdeedu' 'wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
   echo "This is a ezgo-education meta package."
 }
+
+package_ezgo-games() {
+  pkgdesc=('Meta package to pull all ezgo-games related packages')
+  depends=('supertux' 'pingus' 'supertuxkart' 'kdegames-ksudoku' 'picmi' 'kblocks' 'kdegames-palapeli' 'kdegames-kubrick'
+           'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo')
+  echo "This is a ezgo-games meta package."
+}
