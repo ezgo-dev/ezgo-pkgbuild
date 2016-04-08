@@ -12,7 +12,7 @@ pkgrel=1
 arch=('x86_64')
 _ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
 _phetver=PhET2015
-group=("$pkgbase")
+groups=("$pkgbase")
 source=("git+https://anonscm.debian.org/git/blends/projects/ezgo.git"
 	'50_ezgo.cfg'
 	# ezgo-chem elements
@@ -69,7 +69,7 @@ prepare() {
 }
 package_ezgo-wallpapers() {
   pkgdesc='Set of wallpapers sepecified for Ezgo project'
-  group+=('ezgo-artwork' 'ezgo-tasks')
+  groups+=('ezgo-artwork' 'ezgo-tasks')
   # KDE wallpaper
   # Install images
   cd ${srcdir}/${pkgbase}/${pkgbase}-artwork/wallpaper
@@ -79,7 +79,7 @@ package_ezgo-wallpapers() {
 }
 
 package_grub2-themes-ezgo() {
-  group+=('ezgo-artwork' 'ezgo-tasks')
+  groups+=('ezgo-artwork' 'ezgo-tasks')
   depends=('grub')
   # GRUB2 background
   cd ${srcdir}/${pkgbase}/${pkgbase}-artwork/grub/
@@ -127,8 +127,12 @@ package_ezgo-misc() {
   # NOTE: we've included most of the free codecs in Chakra
  
   msg 'Installing 7zipFM.exe (requires wine)'
+<<<<<<< HEAD
   install -dm755 ${pkgdir}/opt/7zip
   mv -v ${srcdir}/7-Zip ${pkgdir}/opt/7zip
+=======
+  cp -vrP ${srcdir}/7-Zip ${pkgdir}/opt/7zip
+>>>>>>> c1a1f674733b6d52ed666ba1be16251d7bfa1ba8
   install -Dm644 ${srcdir}/7z.desktop ${pkgdir}/usr/share/applications/7z.desktop
   
   msg 'Install MIME type values'
@@ -177,14 +181,14 @@ package_ezgo-wordtest() {
 package_ezgo-accessories() {
   pkgdesc=('Extra accessory packages for ezgo - meta package')
   depends=('convertall' 'kate' 'kcalc' 'kmag')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-accessories meta package."
 }
 
 package_ezgo-common() {
   pkgdesc=('Common packages for ezgo - meta package')
   depends=('mesa' 'bash-completion' 'openssh')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-common meta package."
 }
 # NOTE: these are standard Chakra packages
@@ -192,7 +196,7 @@ package_ezgo-common() {
 package_ezgo-education() {
   pkgdesc=('Educational packages for ezgo - meta package')
   depends=('kdeedu' 'wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-education meta package."
 }
 
@@ -200,7 +204,7 @@ package_ezgo-games() {
   pkgdesc=('Game packages selected by ezgo - meta package')
   depends=('supertux' 'pingus' 'supertuxkart' 'kdegames-ksudoku' 'picmi' 'kblocks' 'kdegames-palapeli' 'kdegames-kubrick'
            'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo' 'ktuberling')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   msg 'install ktuberling sound theme'
   cd ${srcdir}/${pkgbase}/ezgo-misc/ktuberling
   install -dm755 ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW/
@@ -216,14 +220,14 @@ package_ezgo-graphics() {
   pkgdesc=('Graphical packages for ezgo - meta package')
   depends=('kdegraphics-kolourpaint' 'tuxpaint' 'inkscape' 'scribus' 'digikam' 'gwenview' 'blender' 'fotowall'
            'hugin' 'krita' 'freecad' 'kruler' 'kdegraphics-kolourpaint' 'kamoso' 'librecad')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-graphics meta package."
 }
 
 package_ezgo-lang-zh_TW-desktop() {
   pkgdesc=('Zh_TW localized packages for ezgo desktop - meta package')
   depends=('otc-source-han-sans' 'kde-l10n-zh_TW')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-lang-zh_TW-desktop meta package."
 }
 
@@ -231,14 +235,14 @@ package_ezgo-multimedia() {
   pkgdesc=('Multimedia packages for ezgo - meta package')
   depends=('amarok' 'vlc' 'audacity' 'tuxguitar' 'rosegarden' 'kdenlive' 'k3b' 'musescore' 'kodi' 'lmms' 'hydrogen'
            'winff' 'ardour' 'timidity++')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-multimedia meta package."
 }
 
 package_ezgo-network() {
   pkgdesc=('Meta package to pull all ezgo-network related packages')
   depends=('pidgin' 'kdenetwork-kopete' 'qftp' 'filezilla' 'kdenetwork-krdc')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-network meta package."
   # FIXME: Consider rolling to ktp instead of kopete, which is unmaintained for long
 }
@@ -246,6 +250,6 @@ package_ezgo-network() {
 package_ezgo-office() {
   pkgdesc=('Meta package to pull all ezgo-office related packages')
   depends=('okular' 'scribus' 'calibre')
-  group+=('ezgo-tasks')
+  groups+=('ezgo-tasks')
   echo "This is a ezgo-officek meta package."
 }
