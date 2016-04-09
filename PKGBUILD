@@ -190,16 +190,9 @@ package_ezgo-common() {
 
 package_ezgo-education() {
   pkgdesc=('Educational packages for ezgo - meta package')
-  depends=('kdeedu' 'wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
+  depends=('wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
   groups+=('ezgo-tasks')
   echo "This is a ezgo-education meta package."
-}
-
-package_ezgo-games() {
-  pkgdesc=('Game packages selected by ezgo - meta package')
-  depends=('supertux' 'pingus' 'supertuxkart' 'kdegames-ksudoku' 'picmi' 'kblocks' 'kdegames-palapeli' 'kdegames-kubrick'
-           'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo' 'ktuberling')
-  groups+=('ezgo-tasks')
   msg 'install ktuberling sound theme'
   cd ${srcdir}/${pkgbase}/ezgo-misc/ktuberling
   install -dm755 ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW/
@@ -209,6 +202,13 @@ package_ezgo-games() {
   install -Dm644 zh_TW/${files} ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW/${files}
   done
   install -Dm644 zh_TW.soundtheme ${pkgdir}/usr/share/apps/ktuberling/sounds/zh_TW.soundtheme
+}
+
+package_ezgo-games() {
+  pkgdesc=('Game packages selected by ezgo - meta package')
+  depends=('supertux' 'pingus' 'supertuxkart' 'kdegames-ksudoku' 'picmi' 'kblocks' 'kdegames-palapeli' 'kdegames-kubrick'
+           'ksquares' 'knetwalk' 'kblackbox' 'kdegames-kigo' 'kdegames-kreversi' 'kfourinline' 'bovo')
+  groups+=('ezgo-tasks')
 }
 
 package_ezgo-graphics() {
