@@ -127,7 +127,8 @@ package_ezgo-misc() {
   # NOTE: we've included most of the free codecs in Chakra
  
   msg 'Installing 7zipFM.exe (requires wine)'
-  cp -vrP ${srcdir}/7-Zip ${pkgdir}/opt/7zip
+  install -dm755 ${pkgdir}/opt/7zip
+  mv -v ${srcdir}/7-Zip ${pkgdir}/opt/7zip
   install -Dm644 ${srcdir}/7z.desktop ${pkgdir}/usr/share/applications/7z.desktop
   
   msg 'Install MIME type values'
