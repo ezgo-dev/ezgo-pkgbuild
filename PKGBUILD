@@ -140,7 +140,7 @@ package_ezgo-npa() {
   depends=('flashplugin')
   optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
-  cp -rv ${srcdir}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
+  cp -rv ${srcdir}/npa_${_ezgover}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
   install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
 }
 
@@ -162,7 +162,7 @@ package_ezgo-usgs() {
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
   
   cd ${pkgdir}/usr/share/ezgo/ezgo-prt
-  cp -vrf ${srcdir}/usgs_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs/
+  cp -vrf ${srcdir}/usgs_${_ezgover}/usgs_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs/
 }
 
 package_ezgo-wordtest() {
@@ -191,7 +191,7 @@ package_ezgo-common() {
 
 package_ezgo-education() {
   pkgdesc=('Educational packages for ezgo - meta package')
-  depends=('kdeedu' 'wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
+  depends=('wxmaxima' 'avogadro' 'stellarium' 'gcompris' 'ktuberling' 'anki')
   groups+=('ezgo-tasks')
   echo "This is a ezgo-education meta package."
 }
@@ -237,7 +237,7 @@ package_ezgo-multimedia() {
 
 package_ezgo-network() {
   pkgdesc=('Meta package to pull all ezgo-network related packages')
-  depends=('pidgin' 'kdenetwork-kopete' 'qftp' 'filezilla' 'kdenetwork-krdc')
+  depends=('pidgin' 'krdc')
   groups+=('ezgo-tasks')
   echo "This is a ezgo-network meta package."
   # FIXME: Consider rolling to ktp instead of kopete, which is unmaintained for long
@@ -247,5 +247,5 @@ package_ezgo-office() {
   pkgdesc=('Meta package to pull all ezgo-office related packages')
   depends=('okular' 'scribus' 'calibre')
   groups+=('ezgo-tasks')
-  echo "This is a ezgo-officek meta package."
+  echo "This is a ezgo-office meta package."
 }
