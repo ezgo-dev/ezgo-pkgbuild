@@ -1,5 +1,5 @@
 pkgbase=ezgo
-pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' # Looks and feels of ezgo
+pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-theme-plymouth' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
          'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' # Utilities of ezgo
          # Metapackage for ezgo
@@ -86,6 +86,15 @@ package_grub2-themes-ezgo() {
   install -Dm644 ${srcdir}/50_ezgo.cfg ${pkgdir}/etc/grub.d/50_ezgo.cfg
   install -Dm644 ezgo-splash-grub-640.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub-640.png
   install -Dm644 ezgo-splash-grub.png ${pkgdir}/usr/share/grub/themes/ezgo/ezgo-splash-grub.png
+}
+
+package_ezgo-theme-plymouth() {
+  groups+=('ezgo-artwork' 'ezgo-tasks')
+  depends=('plymouth')
+  
+  cd ${srcdir}/${pkgbase}/${pkgbase}-artwork/plymouth
+  install -dm755 ${pkgdir}/usr/share/plymouth/themes/
+  mv ezgo13 ${pkgdir}/usr/share/plymouth/themes/
 }
   # TODO: SDDM themes
 
