@@ -6,14 +6,14 @@ pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' # Looks and feels of ezgo
          'ezgo-accessories' 'ezgo-education' 'ezgo-games' 'ezgo-common'
          'ezgo-graphics' 'ezgo-lang-zh_TW-desktop'
          'ezgo-multimedia' 'ezgo-network' 'ezgo-office')
-pkgver=12.0
+pkgver=13.0
 _ezgover=ezgo12
 pkgrel=1
 arch=('x86_64')
 _ezgosource="ftp://goodhorse.idv.tw/debian-ezgo"
-_phetver=PhET2015
+_phetver=PhET2016
 groups=("$pkgbase")
-source=("git+https://anonscm.debian.org/git/blends/projects/ezgo.git"
+source=("ezgo::git+https://github.com/fweng322/debian-ezgo.git"
 	'50_ezgo.cfg'
 	# ezgo-chem elements
 	"${_ezgosource}/ezgo-chem/chemstru_${_ezgover}.tar.gz"
@@ -49,7 +49,7 @@ sha1sums=('SKIP'
           '51039c479ef138409fcc864f35e379e25ec0415f'
           '3d09ac6ebad61ce0f8dd59c183f44bcef92e7e2b'
           'ac61f263705bc3f7d2f080505d7684768eb06c4d'
-          '605e02fd58133e4029fcb7950066245216cbe2e3'
+          'fd3d1636b27c3d116709f1ba7f2c84282075b021'
           '26ff8b02cc75783f931179cecf6ef5e562e06dba'
           '3254f9a55159e1bbf2c411e9b1e9130497d95a14'
           '907f0a1dea4c117b9b20da75d4c50ff5c1354d65'
@@ -74,7 +74,7 @@ package_ezgo-wallpapers() {
   # Install images
   cd ${srcdir}/${pkgbase}/${pkgbase}-artwork/wallpaper
   install -dm755 ${pkgdir}/usr/share/wallpapers/
-  cp -rv ezgo ${pkgdir}/usr/share/wallpapers/
+  cp -rv ezgo13 ${pkgdir}/usr/share/wallpapers/
   cp -rv ezgo-walter ${pkgdir}/usr/share/wallpapers/
 }
 
@@ -214,15 +214,15 @@ package_ezgo-games() {
 
 package_ezgo-graphics() {
   pkgdesc=('Graphical packages for ezgo - meta package')
-  depends=('kdegraphics-kolourpaint' 'tuxpaint' 'inkscape' 'scribus' 'digikam' 'gwenview' 'blender' 'fotowall'
-           'hugin' 'krita' 'freecad' 'kruler' 'kdegraphics-kolourpaint' 'kamoso' 'librecad')
+  depends=('kolourpaint' 'tuxpaint' 'inkscape' 'scribus' 'digikam' 'gwenview' 'blender' 'fotowall'
+           'hugin' 'krita' 'freecad' 'kruler' 'kamoso' 'librecad')
   groups+=('ezgo-tasks')
   echo "This is a ezgo-graphics meta package."
 }
 
 package_ezgo-lang-zh_TW-desktop() {
   pkgdesc=('Zh_TW localized packages for ezgo desktop - meta package')
-  depends=('otc-source-han-sans' 'kde-l10n-zh_TW')
+  depends=('ttf-noto-cjk' 'kde-l10n-zh_TW')
   groups+=('ezgo-tasks')
   echo "This is a ezgo-lang-zh_TW-desktop meta package."
 }
