@@ -1,5 +1,5 @@
 pkgbase=ezgo
-pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-theme-plymouth' # Looks and feels of ezgo
+pkgname=('grub2-themes-ezgo' 'ezgo-wallpapers' 'ezgo-theme-plymouth' 'ezgo-theme-sddm' # Looks and feels of ezgo
          'ezgo-chem' 'ezgo-doc' 'ezgo-gsyan'    # Applications of ezgo
          'ezgo-misc' 'ezgo-npa' 'ezgo-phet' 'ezgo-usgs' 'ezgo-wordtest' # Utilities of ezgo
          # Metapackage for ezgo
@@ -89,6 +89,7 @@ package_grub2-themes-ezgo() {
 }
 
 package_ezgo-theme-plymouth() {
+  pkgdesc=('Plymouth splash theme for ezgo')
   groups+=('ezgo-artwork' 'ezgo-tasks')
   depends=('plymouth')
   
@@ -96,7 +97,15 @@ package_ezgo-theme-plymouth() {
   install -dm755 ${pkgdir}/usr/share/plymouth/themes/
   mv ezgo13 ${pkgdir}/usr/share/plymouth/themes/
 }
-  # TODO: SDDM themes
+
+package_ezgo-theme-sddm() {
+  pkgdesc=('SDDM theme for ezgo')
+  groups+=('ezgo-artwork' 'ezgo-tasks')
+  depends=('sddm')
+  cd ${srcdir}/${pkgbase}/${pkgbase}-artwork/sddm/
+  install -dm755 ${pkgdir}/usr/share/sddm/themes/ezgo
+  cp -rv * ${pkgdir}/usr/share/sddm/themes/ezgo/
+}
 
 package_ezgo-chem() {
   pkgdesc='Set of educational software of Chemistry for high school'
