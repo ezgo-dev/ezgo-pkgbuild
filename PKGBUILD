@@ -137,44 +137,36 @@ package_ezgo-misc() {
   # TODO: This is a big package bundled with several utilities that aren't belonging to the repo.
   #       Maybe, we should make this a meta package?
   pkgdesc=('Misc utilities for ezgo project - meta package')
-  depends=('flashplugin' 'openjdk' 'chromium' 'skype' 'wine' 'sound-theme-freedesktop')
+  depends=('flashplugin' 'openjdk' 'chromium' 'sound-theme-freedesktop')
   optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
   
   msg 'Installing media pack'
   echo 'We may not need all these utilities'
   # NOTE: we've included most of the free codecs in Chakra
- 
-  msg 'Installing 7zipFM.exe (requires wine)'
-  install -dm755 ${pkgdir}/opt/7zip
-  mv -v ${srcdir}/7-Zip ${pkgdir}/opt/7zip
-  install -Dm644 ${srcdir}/7z.desktop ${pkgdir}/usr/share/applications/7z.desktop
-  
-  msg 'Install MIME type values'
-  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/mimeapps.list ${pkgdir}/usr/share/applications/mimeapps.list
 }
 
 package_ezgo-npa() {
   pkgdesc=('NPA package')
-  depends=('flashplugin')
-  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium'
+              'flashplugin: for NPAPI-based flash')
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/npa
   cp -rv ${srcdir}/npa_${_ezgover}/npa_${_ezgover}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/npa/
-  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
+  install -Dm644 ${srcdir}/npa.desktop ${pkgdir}/usr/share/applications/npa.desktop
 }
 
 package_ezgo-phet() {
   pkgdesc=('PhET package')
-  depends=('flashplugin')
-  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium'
+              'flashplugin: for NPAPI-based flash')
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET
   cp -rv ${srcdir}/${_phetver}/* ${pkgdir}/usr/share/ezgo/ezgo-prt/PhET/
-  install -Dm644 ${srcdir}/${pkgbase}/${pkgname}/phet.desktop ${pkgdir}/usr/share/applications/phet.desktop
+  install -Dm644 ${srcdir}/phet.desktop ${pkgdir}/usr/share/applications/phet.desktop
 }
 
 package_ezgo-usgs() {
   pkgdesc=('USGS package')
-  depends=('flashplugin')
-  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium')
+  optdepends=('pepperflashplugin: for using ppapi version of flash player under chromium'
+              'flashplugin: for NPAPI-based flash')
   install -Dm644 ${srcdir}/usgs.desktop ${pkgdir}/usr/share/applications/usgs.desktop
   install -Dm644 ${srcdir}/USGS.png ${pkgdir}/usr/share/ezgo/icons/USGS.png
   install -dm755 ${pkgdir}/usr/share/ezgo/ezgo-prt/usgs
